@@ -1,13 +1,216 @@
-<!doctype html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>صحبي | Sohby</title>
-  <link rel="stylesheet" href="style.css">
-</head>
-<body>
-  <div id="app"></div>
-  <script src="app.js"></script>
-</body>
-</html>
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>صحبي — MVP</title><style>
+*{box-sizing:border-box}body{margin:0;background:#f5f8fc;color:#17243a;font-family:system-ui,-apple-system,Segoe UI,Tahoma,Arial,sans-serif}button,input,textarea,select{font:inherit}button{cursor:pointer;border:0}.app{max-width:680px;margin:auto;min-height:100vh;background:#f5f8fc}.top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid #e5ebf4;padding:12px 14px;display:flex;align-items:center;justify-content:space-between}.brand{font-size:24px;font-weight:900;color:#135dcc}.brand small{display:block;font-size:10px;color:#8090a8;font-weight:600}.icon{width:40px;height:40px;border-radius:13px;background:#edf4ff;color:#135dcc}.avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#dceaff,#b9d4ff);display:grid;place-items:center;color:#155ac5;font-weight:900;overflow:hidden;flex:0 0 auto}.avatar img{width:100%;height:100%;object-fit:cover}.stories{display:flex;gap:12px;overflow:auto;padding:14px}.story{min-width:70px;text-align:center;font-size:11px;color:#63728a}.story .avatar{width:58px;height:58px;margin:auto;border:3px solid #fff;box-shadow:0 0 0 2px #2d72db}.compose,.post,.panel{background:#fff;border:1px solid #e4eaf2;border-radius:20px;margin:0 12px 12px;box-shadow:0 5px 18px rgba(31,62,105,.05)}.compose{padding:13px}.row{display:flex;align-items:center;gap:10px}.compose textarea{width:100%;border:0;outline:0;resize:none;padding:10px 0;min-height:48px}.chips{display:flex;gap:8px;flex-wrap:wrap}.chip{background:#eef4ff;color:#145dc8;border-radius:12px;padding:8px 11px;font-size:12px}.primary{background:#1765d1;color:white;border-radius:12px;padding:10px 16px;font-weight:800}.post{overflow:hidden}.posthead{padding:13px;display:flex;gap:10px;align-items:center}.name{font-weight:850}.meta{font-size:11px;color:#7b899d;margin-top:3px}.privacy{margin-right:auto;font-size:11px;color:#6b7b92}.posttext{padding:0 14px 12px;line-height:1.65}.media{display:grid;gap:3px;background:#edf2f8}.media.two{grid-template-columns:1fr 1fr}.m
+edia.three{grid-template-columns:1fr 1fr}.media img,.media video{width:100%;height:210px;object-fit:cover;display:block}.media.three>*:first-child{grid-row:span 2;height:423px}.stats{display:flex;justify-content:space-between;color:#75849b;font-size:12px;padding:10px 14px;border-bottom:1px solid #edf0f5}.actions{display:flex;padding:4px}.action{flex:1;background:transparent;padding:11px 4px;color:#5d6c82;border-radius:10px}.action:hover{background:#f1f5fa}.action.active{color:#1765d1;font-weight:800}.comments{padding:10px 14px;display:none}.comment{display:flex;gap:8px;margin:9px 0}.comment .avatar{width:32px;height:32px}.bubble{background:#f1f4f8;border-radius:15px;padding:8px 10px;font-size:12px;flex:1}.reply{margin-top:5px;color:#1765d1;font-size:11px}.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(680px,100%);background:rgba(255,255,255,.96);backdrop-filter:blur(14px);border-top:1px solid #e4eaf2;display:grid;grid-template-columns:repeat(5,1fr);padding:7px 8px calc(7px + env(safe-area-inset-bottom));z-index:30}.nav button{background:transparent;color:#75849b;font-size:11px}.nav b{display:block;font-size:20px;margin-bottom:2px}.nav .sel{color:#1765d1;font-weight:800}.page{padding-bottom:82px}.modal{position:fixed;inset:0;background:rgba(9,25,50,.45);z-index:50;display:none;align-items:flex-end}.sheet{background:#fff;border-radius:24px 24px 0 0;width:min(680px,100%);max-height:90vh;overflow:auto;padding:18px;margin:auto 0}.sheet h2{margin:0 0 15px}.field{margin:10px 0}.field label{font-size:12px;color:#66758b;display:block;margin-bottom:6px}.field input,.field textarea,.field select{width:100%;border:1px solid #dce4ef;border-radius:13px;padding:12px;outline:none}.close{float:left;background:#edf2f8;width:36px;height:36px;border-radius:50%}.preview{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-top:10px}.preview img{width:100%;height:100px;object-fit:cover;border-radius:10px}.toast{position:fixed;top:75px;left:50%;transform:translateX(-50%);background:#102b55;color:#ff
+f;padding:10px 15px;border-radius:12px;z-index:100;display:none;font-size:12px}.profileHero{padding:20px 15px;background:linear-gradient(135deg,#eaf3ff,#fff)}.profileHero .avatar{width:84px;height:84px}.counts{display:flex;gap:18px;margin-top:14px}.counts b{display:block}.sectionTitle{padding:14px;font-size:16px;font-weight:900}.friends{display:flex;gap:12px;overflow:auto;padding:0 14px 14px}.friend{min-width:72px;text-align:center;font-size:11px}.friend .avatar{width:58px;height:58px;margin:auto}.list{padding:8px 14px}.item{display:flex;align-items:center;gap:10px;padding:11px 0;border-bottom:1px solid #eef1f5}.item .grow{flex:1}.badge{background:#1765d1;color:white;border-radius:999px;padding:3px 7px;font-size:10px}.login{position:fixed;inset:0;background:linear-gradient(160deg,#0d56bd,#2b7ce1);display:flex;align-items:center;justify-content:center;padding:18px;z-index:80}.loginbox{background:white;width:min(430px,100%);border-radius:26px;padding:24px;box-shadow:0 25px 70px rgba(0,0,0,.2)}.loginbox .logo{text-align:center;font-size:38px;font-weight:950;color:#145dcc}.muted{color:#718096;font-size:12px;line-height:1.6}.hidden{display:none!important}@media(min-width:681px){body{padding-bottom:0}.nav{bottom:18px;border:1px solid #e4eaf2;border-radius:20px;box-shadow:0 12px 30px rgba(20,50,90,.1)}.modal{align-items:center}.sheet{border-radius:24px;margin:auto}}
+</style></head><body><div class="app"><header class="top"><div class="brand">صحبي<small>شبكة اجتماعية حديثة</small></div><button class="icon" onclick="openPanel('notifications')">🔔</button></header><main class="page" id="page"></main><nav class="nav"><button class="sel" onclick="go('home',this)"><b>⌂</b>الرئيسية</button><button onclick="go('friends',this)"><b>👥</b>الأصدقاء</button><button onclick="go('messages',this)"><b>💬</b>الرسائل</button><button onclick="go('profile',this)"><b>◉</b>حسابي</button><button onclick="openPanel('settings')"><b>⚙</b>الإعدادات</button></nav></div><div class="modal" id="modal"><div class="sheet" id="sheet"></div></div><div class="toast" id="toast"></div><div class="login" id="login"><div class="loginbox"><div class="logo">صحبي</div><p class="muted" style="text-align:center">نسخة MVP تجريبية — Mobile First</p><div id="loginForm"><div class="field"><label>الاسم</label><input id="ln" placeholder="اسمك الكامل"></div><div class="field"><label>بريد Google / Gmail</label><input id="lgmail" type="email" placeholder="name@gmail.com"></div><div class="field"><label>اسم المستخدم</label><input id="lu" placeholder="مثال: kareem"></div><div class="field"><label>رقم الموبايل</label><input id="lp" type="tel" placeholder="01xxxxxxxxx"></div><div class="field"><label>كلمة السر</label><input id="lpass" type="password" minlength="6" placeholder="6 أحرف أو أكثر"></div><div class="field"><label>الصورة الشخصية</label><input id="lphoto" type="file" accept="image/*"></div><button class="primary" style="width:100%" onclick="requestOtp()">متابعة وإرسال OTP</button><button class="googleBtn" style="width:100%;margin-top:10px" onclick="googleDemo()">G&nbsp;&nbsp; المتابعة باستخدام Google (Gmail)</button><button id="forgotPassword" style="width:100%;margin-top:10px;background:transparent;color:#1765d1;font-weight:800" onclick="forgotPasswordDemo()">نسيت كلمة السر؟</button></div><div id="otpForm" class="hidden"><p class="muted">OTP تجريبي: <b>123456</b></p><div class="field"><label>كود التحقق</label><input id="ot
+p" inputmode="numeric" maxlength="6" placeholder="123456"></div><button class="primary" style="width:100%" onclick="finishLogin()">تأكيد وإنشاء الحساب</button></div></div></div><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+/* صحبي V10 — Supabase integration
+   ضع رابط المشروع و anon key هنا. لا تضع service_role key داخل HTML. */
+const SUPABASE_URL = window.SAHBY_SUPABASE_URL || 'YOUR_SUPABASE_URL';
+const SUPABASE_ANON_KEY = window.SAHBY_SUPABASE_ANON_KEY || 'YOUR_SUPABASE_ANON_KEY';
+const SUPABASE_READY = SUPABASE_URL.startsWith('https://') && !SUPABASE_URL.includes('YOUR_') && !SUPABASE_ANON_KEY.includes('YOUR_');
+const sb = SUPABASE_READY ? window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY) : null;
+const state={user:{name:'كريم محمد',username:'kareem',photo:'',phone:''},posts:[],friends:[['أحمد محمد','أ'],['سارة علي','س'],['محمد حسن','م'],['نور خالد','ن']],requests:[['محمود علي','م'],['ريم حسن','ر']],following:['سارة علي'],notifications:3,messages:[['أحمد محمد','أهلًا يا كريم 👋','10:31'],['سارة علي','شوفت المنشور الجديد؟','09:48']],saved:[]};
+const demoMedia=['https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80','https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=900&q=80','https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=900&q=80'];
+function toast(t){const x=document.getElementById('toast');x.textContent=t;x.style.display='block';setTimeout(()=>x.style.display='none',1800)}
+function avatar(letter,photo=''){return `<div class="avatar">${photo?`<img src="${photo}">`:letter}</div>`}
+function go(page,btn){document.querySelectorAll('.nav button').forEach(x=>x.classList.remove('sel'));if(btn)btn.classList.add('sel');render(page)}
+function render(page='home'){const p=document.getElementById('page'); if(page==='home')renderHome(p);if(page==='friends')renderFriends(p);if(page==='messages')renderMessages(p);if(page==='profile')renderProfile(p)}
+function ensureDemoPosts(){if(state.posts.length===0){state.posts=[{id:1,name:'سارة علي',initial:'س',privacy:'عام',text:'صباح جميل! تجربة أول منشور في صحبي 🌤️',media:demoMedia.slice(0,3),reactions:{'❤️':12,'👍':8,'😂':2},comments:[['أحمد محمد','أ','جميل جدًا!'],['نور خالد','ن','😍']],shares:3},{id:2,name:'أحمد محمد',initial:'أ',privacy:'الأصدقاء',text:'مين جاهز للويك إند؟ 😄',media:[],reactions:{'👍':14,'😂':6},comments:[],shares:1}]}}
+function renderHome(p){ensureDemoPosts();p.innerHTML=`<div class="stories">${state.friends.map((f,i)=>`<div class="story" onclick="openStory(${i})">${avatar(f[1])}<div>${f[0].split(' ')[0]}</div><small>24س</small></div>`).join('')}</div><section class="compose"><div class="row">${avatar(state.user.name[0],state.user.photo)}<textarea id="quick" placeholder="بماذا تفكر يا ${state.user.name.split(' ')[0]}؟"></textarea></div><div class="row" style="justify-content:space-between"><div class="chips"><button class="chip" onclick="openComposer()">📷 صور</button><button class="chip" onclick="openComposer(true)">🎥 فيديو</button></div><button class="primary" onclick="openComposer()">نشر</button></div></section>${state.posts.map(postHTML).join('')}`}
+function samplePosts(){return postHTML({id:1,name:'سارة علي',initial:'س',privacy:'عام',text:'صباح جميل! تجربة أول منشور في صحبي 🌤️',media:demoMedia.slice(0,3),reactions:{'❤️':12,'👍':8,'😂':2},comments:[['أحمد محمد','أ', 'جميل جدًا!'],['نور خالد','ن','😍'] ]})+postHTML({id:2,name:'أحمد محمد',initial:'أ',privacy:'الأصدقاء',text:'مين جاهز للويك إند؟ 😄',media:[],reactions:{'👍':14,'😂':6},comments:[]})}
+function postHTML(x){const total=Object.values(x.reactions||{}).reduce((a,b)=>a+b,0);return `<article class="post"><div class="posthead">${avatar(x.initial,x.name===state.user.name?state.user.photo:'')}<div><div class="name">${x.name}</div><div class="meta">منذ قليل</div></div><div class="privacy">${x.privacy==='عام'?'🌎':x.privacy==='الأصدقاء'?'👥':'🔒'} ${x.privacy}</div></div><div class="posttext">${x.text||''}</div>${x.media?.length?`<div class="media ${x.media.length===2?'two':x.media.length>=3?'three':''}">${x.media.map(m=>m.endsWith('.mp4')?`<video controls src="${m}"></video>`:`<img src="${m}">`).join('')}</div>`:''}<div class="stats"><span>${Object.entries(x.reactions||{}).map(([k,v])=>`${k} ${v}`).join('  ')}</span><span>${x.comments?.length||0} تعليق · ${x.shares||0} مشاركة</span></div><div class="actions"><button class="action reactionBtn" onclick="react('${x.id}','👍')" oncontextmenu="pickReact(event,${x.id})" onpointerdown="startLongPress(event,'${x.id}')" onpointerup="cancelLongPress()" onpointerleave="cancelLongPress()">👍 تفاعل</button><button class="action" onclick="openCommentsPage('${x.id}')">💬 ${x.comments?.length||0} تعليق <span style="font-size:10px">· عرض الكل</span></button><button class="action" onclick="share('${x.id}')">↗ مشاركة</button><button class="action" onclick="savePost('${x.id}')">🔖 حفظ</button></div><div class="comments" id="c${x.id}">${(x.comments||[]).map(c=>`<div class="comment">${avatar(c[1])}<div class="bubble"><b>${c[0]}</b><br>${c[2]}<div class="reply">↩ رد</div></div></div>`).join('')}<div class="row"><input id="ci${x.id}" style="flex:1;border:1px solid #dce4ef;border-radius:12px;padding:10px" placeholder="اكتب تعليقًا..."><button class="primary" onclick="comment(${x.id})">إرسال</button></div></div></article>`}
+function react(id,r){let x=findPost(id);if(!x){x={id,name:'سارة علي',initial:'س',privacy:'عام',text:'صباح جميل! تجربة أول منشور في صحبي 🌤️',media:demoMedia,reactions:{},comments:[]};state.posts.push(x)}x.reactions[r]=(x.reactions[r]||0)+1;toast('تم تسجيل '+r);render('home')}
+function pickReact(e,id){e.preventDefault();showReactionMenu(id,e.clientX||window.innerWidth/2,e.clientY||180);return false}
+function showReactionMenu(id,x,y){let old=document.getElementById('reactionMenu');if(old)old.remove();const d=document.createElement('div');d.id='reactionMenu';d.style.cssText='position:fixed;z-index:99999;left:'+Math.max(8,Math.min(window.innerWidth-260,x-120))+'px;top:'+Math.max(70,Math.min(window.innerHeight-80,y-70))+'px;background:#fff;border:1px solid #dfe7f2;box-shadow:0 12px 35px rgba(15,45,90,.22);border-radius:18px;padding:8px;display:flex;gap:5px;direction:ltr';['👍','❤️','😂','😮','😢'].forEach(r=>{const b=document.createElement('button');b.textContent=r;b.style.cssText='width:44px;height:44px;border:0;background:#f4f7fb;border-radius:13px;font-size:22px;cursor:pointer';b.onclick=()=>{react(id,r);d.remove()};d.appendChild(b)});document.body.appendChild(d);setTimeout(()=>{document.addEventListener('click',()=>d.remove(),{once:true})},0)}
+let lpTimer=null; function startLongPress(e,id){if(e.pointerType==='mouse')return;cancelLongPress();lpTimer=setTimeout(()=>showReactionMenu(id,e.clientX,e.clientY),550)} function cancelLongPress(){if(lpTimer){clearTimeout(lpTimer);lpTimer=null}}
+function findPost(id){return state.posts.find(x=>x.id===id)}
+function toggleComments(id){const el=document.getElementById('c'+id);if(el)el.style.display=el.style.display==='block'?'none':'block'}
+function comment(id){const el=document.getElementById('ci'+id),t=el?.value.trim();if(!t)return;let x=findPost(id);if(!x){x={id,name:'سارة علي',initial:'س',privacy:'عام',text:'صباح جميل! تجربة أول منشور في صحبي 🌤️',media:demoMedia,reactions:{},comments:[]};state.posts.push(x)}x.comments.push([state.user.name,state.user.name[0],t]);el.value='';render('home');setTimeout(()=>toggleComments(id),50)}
+function share(id){const x=findPost(id)||{id};x.shares=(x.shares||0)+1;toast('تمت مشاركة المنشور')}
+function savePost(id){if(!state.saved.includes(id))state.saved.push(id);toast('تم حفظ المنشور')}
+function openComposer(video=false){openPanel('composer',video)}
+function openPanel(type,arg){const modal=document.getElementById('modal'),s=document.getElementById('sheet');modal.style.display='flex';if(type==='composer')s.innerHTML=`<button class="close" onclick="closeModal()">×</button><h2>إنشاء منشور</h2><div class="field"><label>ماذا تريد أن تنشر؟</label><textarea id="pt" rows="4" placeholder="اكتب شيئًا..."></textarea></div><div class="field"><label>الخصوصية</label><select id="pp"><option>عام</option><option>الأصدقاء</option><option>أنا فقط</option></select></div><div class="field"><label>صور متعددة + فيديو</label><input id="mediaInput" type="file" accept="image/*,video/*" multiple onchange="previewMedia(this)"><div class="preview" id="preview"></div></div><button class="primary" style="width:100%" onclick="publish()">نشر المنشور</button>`;if(type==='notifications')s.innerHTML=`<button class="close" onclick="closeModal()">×</button><h2>الإشعارات</h2><div class="list"><div class="item">❤️ <div class="grow"><b>سارة علي</b> تفاعلت مع منشورك</div><span class="badge">جديد</span></div><div class="item">👥 <div class="grow"><b>محمود علي</b> أرسل طلب صداقة</div><span class="badge">جديد</span></div><div class="item">💬 <div class="grow"><b>أحمد محمد</b> أرسل رسالة جديدة</div><span class="badge">2</span></div></div>`;if(type==='settings')s.innerHTML=`<button class="close" onclick="closeModal()">×</button><h2>الإعدادات والخصوصية</h2><div class="item">🔒 <div class="grow"><b>خصوصية المنشورات</b><br><span class="meta">تحكم في جمهور كل منشور</span></div></div><div class="item">👁️ <div class="grow"><b>آخر ظهور</b><br><span class="meta">ظاهر للأصدقاء</span></div></div><div class="item">💬 <div class="grow"><b>من يستطيع مراسلتي</b><br><span class="meta">الأصدقاء</span></div></div><div class="item" onclick="go('profile');closeModal()">👤 <div class="grow"><b>الملف الشخصي</b><br><span class="meta">عرض وتعديل ملفك الشخصي</span></div></div><div class="item">📱 <div class="grow"><b>رقم الموبايل</b><br><span class="meta">مخفي عن الآخرين</span></div></div><div class="item logoutItem" onclick="
+logout()">🚪 <div class="grow"><b>تسجيل الخروج</b><br><span class="meta">الخروج من حساب صحبي على هذا الجهاز</span></div></div>`}
+function closeModal(){document.getElementById('modal').style.display='none'}
+function previewMedia(inp){const box=document.getElementById('preview');box.innerHTML='';[...inp.files].slice(0,8).forEach(f=>{const u=URL.createObjectURL(f);box.innerHTML+=f.type.startsWith('video/')?`<video src="${u}" controls style="width:100%;height:100px;object-fit:cover;border-radius:10px"></video>`:`<img src="${u}">`})}
+function publish(){const text=document.getElementById('pt').value.trim(),privacy=document.getElementById('pp').value,input=document.getElementById('mediaInput');let media=[];if(input?.files?.length){[...input.files].slice(0,8).forEach(f=>media.push(URL.createObjectURL(f)))}if(!text&&!media.length)return toast('أضف نصًا أو صورة أو فيديو');state.posts.unshift({id:Date.now(),name:state.user.name,initial:state.user.name[0],privacy,text,media,reactions:{},comments:[]});closeModal();render('home');toast('تم نشر المنشور')}
+function renderFriends(p){p.innerHTML=`<section class="panel"><div class="sectionTitle">طلبات الصداقة</div><div class="list">${state.requests.map((r,i)=>`<div class="item">${avatar(r[1])}<div class="grow"><b>${r[0]}</b><div class="meta">يريد أن يصبح صديقك</div></div><button class="primary" onclick="acceptFriend(${i})">قبول</button></div>`).join('')}</div></section><section class="panel"><div class="sectionTitle">الأصدقاء</div><div class="friends">${state.friends.map(f=>`<div class="friend">${avatar(f[1])}<div>${f[0].split(' ')[0]}</div><div class="meta">🟢 متصل</div></div>`).join('')}</div></section><section class="panel"><div class="sectionTitle">المتابعة</div><div class="list"><div class="item">👤 <div class="grow"><b>سارة علي</b><div class="meta">تتابع هذا الحساب</div></div><button class="chip" onclick="toast('تم إلغاء المتابعة')">إلغاء</button></div></div></section>`}
+function acceptFriend(i){const r=state.requests.splice(i,1)[0];state.friends.push(r);state.notifications++;toast('تم قبول طلب الصداقة');render('friends')}
+function renderMessages(p){p.innerHTML=`<section class="panel"><div class="sectionTitle">الأصدقاء</div><div class="friends">${state.friends.map((f,i)=>`<div class="friend" onclick="openChat('${f[0]}','${f[1]}')">${avatar(f[1])}<div>${f[0].split(' ')[0]}</div><div class="meta">🟢</div></div>`).join('')}</div></section><section class="panel"><div class="sectionTitle">المحادثات 🔐</div><div class="list">${state.messages.map(m=>`<div class="item" onclick="openChat('${m[0]}','${m[1]}')">${avatar(m[1])}<div class="grow"><b>${m[0]}</b><div class="meta">${m[2]}</div></div><span>🔐</span></div>`).join('')}</div></section>`}
+function openChat(name,initial){openPanel('chat',{name,initial})}
+const oldOpen=openPanel;openPanel=function(type,arg){if(type!=='chat')return oldOpen(type,arg);const s=document.getElementById('sheet'),modal=document.getElementById('modal');modal.style.display='flex';s.innerHTML=`<button class="close" onclick="closeModal()">×</button><div class="row" style="margin-bottom:12px">${avatar(arg.initial)}<div><div class="name">${arg.name}</div><div class="meta">🟢 متصل الآن · 🔐 تشفير طرف إلى طرف (تجريبي)</div></div></div><div id="chatbox" style="min-height:300px;background:#f5f8fc;border-radius:18px;padding:12px;display:flex;flex-direction:column;gap:8px"><div class="bubble" style="align-self:flex-end">أهلًا! 👋</div><div class="bubble" style="align-self:flex-start;background:#1765d1;color:#fff">أهلًا بيك في صحبي</div></div><form class="row" style="margin-top:10px" onsubmit="sendChat(event,'${arg.name}')"><input id="chatInput" style="flex:1;border:1px solid #dce4ef;border-radius:13px;padding:12px" placeholder="اكتب رسالة..."><button class="primary">إرسال</button></form>`}
+function sendChat(e,name){e.preventDefault();const i=document.getElementById('chatInput'),t=i.value.trim();if(!t)return;document.getElementById('chatbox').innerHTML+=`<div class="bubble" style="align-self:flex-end;background:#1765d1;color:#fff">${escapeHtml(t)}</div>`;i.value=''}function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]))}
+function renderProfile(p){p.innerHTML=`<section class="panel profileHero"><div class="row">${avatar(state.user.name[0],state.user.photo)}<div><div class="name" style="font-size:20px">${state.user.name}</div><div class="meta">@${state.user.username}</div><div class="meta">محب للتواصل والمشاركة ✨</div></div></div><div class="counts"><div><b>${state.friends.length}</b><span class="meta">أصدقاء</span></div><div><b>128</b><span class="meta">متابعون</span></div><div><b>54</b><span class="meta">يتابع</span></div></div></section><section class="panel"><div class="sectionTitle">منشوراتي</div>${state.posts.filter(x=>x.name===state.user.name).map(postHTML).join('')||'<div class="muted" style="padding:14px">لم تنشر شيئًا بعد.</div>'}</section>`}
+function requestOtp(){const n=document.getElementById('ln').value.trim(),u=document.getElementById('lu').value.trim(),ph=document.getElementById('lp').value.trim(),pw=document.getElementById('lpass').value;if(!n||!u||!ph||!pw)return toast('أكمل بيانات الحساب وكلمة السر');if(pw.length<6)return toast('كلمة السر يجب أن تكون 6 أحرف أو أكثر');document.getElementById('loginForm').classList.add('hidden');document.getElementById('otpForm').classList.remove('hidden');toast('تم إرسال OTP تجريبي')}
+function finishLogin(){if(document.getElementById('otp').value!=='123456')return toast('استخدم OTP التجريبي 123456');state.user.name=document.getElementById('ln').value;state.user.username=document.getElementById('lu').value;state.user.phone=document.getElementById('lp').value;state.user.passwordSet=true;const f=document.getElementById('lphoto').files?.[0];if(f){const r=new FileReader();r.onload=e=>{state.user.photo=e.target.result;document.getElementById('login').classList.add('hidden');render('home')};r.readAsDataURL(f)}else{document.getElementById('login').classList.add('hidden');render('home')}}
+render('home');
+async function loadSupabaseData(){
+  if(!sb) return;
+  try{
+    const {data:{session}}=await sb.auth.getSession();
+    if(!session){document.getElementById('login').classList.remove('hidden');return;}
+    const uid=session.user.id;
+    const {data:profile}=await sb.from('profiles').select('id,full_name,username,avatar_url,bio').eq('id',uid).maybeSingle();
+    if(profile){state.user={...state.user,name:profile.full_name||state.user.name,username:profile.username||state.user.username,photo:profile.avatar_url||'',email:session.user.email||''};}
+    const {data:posts,error}=await sb.from('posts').select('id,user_id,content,image_url,created_at').order('created_at',{ascending:false}).limit(50);
+    if(error) throw error;
+    const ids=(posts||[]).map(p=>p.id);
+    let likes=[]; let comments=[];
+    if(ids.length){
+      const lr=await sb.from('likes').select('id,post_id,user_id,created_at').in('post_id',ids);
+      if(!lr.error) likes=lr.data||[];
+      const cr=await sb.from('comments').select('id,post_id,user_id,content,created_at').in('post_id',ids).order('created_at',{ascending:true});
+      if(!cr.error) comments=cr.data||[];
+    }
+    state.posts=(posts||[]).map(p=>{
+      const rs={}; (likes.filter(l=>l.post_id===p.id)).forEach(l=>{rs['👍']=(rs['👍']||0)+1});
+      const cs=comments.filter(c=>c.post_id===p.id).map(c=>[c.user_id===uid?state.user.name:'مستخدم صحبي','•',c.content]);
+      return {id:p.id,name:p.user_id===uid?state.user.name:'مستخدم صحبي',initial:p.user_id===uid?state.user.name[0]:'ص',privacy:'عام',text:p.content||'',media:p.image_url?[p.image_url]:[],reactions:rs,comments:cs,shares:0};
+    });
+    if(state.posts.length===0) ensureDemoPosts();
+    document.getElementById('login').classList.add('hidden');
+    render('home');
+  }catch(e){console.error(e);toast('تعذر تحميل بيانات Supabase — نكمل بالنسخة المحلية');}
+}
+
+async function supabaseSignInOrSignUp(){
+  if(!sb) return false;
+  const email=document.getElementById('lgmail').value.trim();
+  const password=document.getElementById('lpass').value;
+  const name=document.getElementById('ln').value.trim();
+  const username=document.getElementById('lu').value.trim();
+  const phone=document.getElementById('lp').value.trim();
+  if(!email||!password)return false;
+  let r=await sb.auth.signInWithPassword({email,password});
+  if(r.error){
+    r=await sb.auth.signUp({email,password,options:{data:{full_name:name,username,phone}}});
+    if(r.error){toast(r.error.message||'فشل إنشاء الحساب');return true;}
+    if(r.data.user){
+      await sb.from('profiles').upsert({id:r.data.user.id,full_name:name,username,avatar_url:null,bio:''},{onConflict:'id'});
+      toast(r.data.session?'تم إنشاء الحساب':'افتح Gmail لتأكيد الحساب');
+    }
+  }
+  await loadSupabaseData();
+  return true;
+}
+
+const _finishLoginV10=finishLogin;
+finishLogin=async function(){
+  if(sb){
+    const ok=await supabaseSignInOrSignUp();
+    if(ok) return;
+  }
+  _finishLoginV10();
+};
+
+const _reactV10=react;
+react=async function(id,r){
+  if(sb){
+    const {data:{session}}=await sb.auth.getSession();
+    if(session){
+      const {data:existing}=await sb.from('likes').select('id').eq('post_id',id).eq('user_id',session.user.id).maybeSingle();
+      if(existing) await sb.from('likes').delete().eq('id',existing.id);
+      else await sb.from('likes').insert({post_id:id,user_id:session.user.id});
+      await loadSupabaseData(); toast('تم تحديث التفاعل'); return;
+    }
+  }
+  _reactV10(id,r);
+};
+
+const _commentV10=comment;
+comment=async function(id){
+  if(sb){
+    const {data:{session}}=await sb.auth.getSession(); const el=document.getElementById('ci'+id); const t=el?.value.trim();
+    if(session&&t){const {error}=await sb.from('comments').insert({post_id:id,user_id:session.user.id,content:t}); if(error) toast(error.message); else {el.value='';await loadSupabaseData();toast('تم نشر التعليق');} return;}
+  }
+  _commentV10(id);
+};
+
+const _publishV10=publish;
+publish=async function(){
+  if(sb){
+    const {data:{session}}=await sb.auth.getSession();
+    if(session){
+      const text=document.getElementById('pt').value.trim(),privacy=document.getElementById('pp').value,input=document.getElementById('mediaInput');
+      if(!text && !(input?.files?.length)) return toast('أضف نصًا أو صورة أو فيديو');
+      let image_url=null;
+      if(input?.files?.length){const f=input.files[0];const path=session.user.id+'/'+Date.now()+'-'+f.name.replace(/[^a-zA-Z0-9._-]/g,'_');const up=await sb.storage.from('post-media').upload(path,f,{upsert:false});if(!up.error){image_url=sb.storage.from('post-media').getPublicUrl(path).data.publicUrl;}}
+      const {error}=await sb.from('posts').insert({user_id:session.user.id,content:text,image_url});
+      if(error){toast(error.message);return;} closeModal();await loadSupabaseData();toast('تم نشر المنشور');return;
+    }
+  }
+  _publishV10();
+};
+
+window.addEventListener('load',()=>{if(sb)loadSupabaseData();});
+
+</script>
+<style>
+.googleBtn{background:#fff!important;color:#1f2937!important;border:1px solid #d8e0ea!important;font-weight:800;box-shadow:0 2px 8px rgba(20,40,80,.06)}
+.commentsPage{position:fixed;inset:0;background:#f5f8fc;z-index:10000;display:none;overflow:auto}
+.commentsPage .cpTop{position:sticky;top:0;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid #e4eaf2;padding:12px 14px;display:flex;align-items:center;gap:10px;z-index:2}
+.cpBack{width:40px;height:40px;border-radius:50%;background:#edf3fb;font-size:20px}.cpTitle{font-weight:900;font-size:18px;color:#102a56}.cpBody{max-width:680px;margin:auto;padding-bottom:90px}.cpPost{background:#fff;border-bottom:1px solid #e3e9f1;padding:14px}.cpPost .media{margin-top:10px}.cpComments{padding:10px 14px}.cpComment{display:flex;gap:9px;margin:12px 0}.cpComment .bubble{background:#f1f4f8;border-radius:15px;padding:9px 12px;flex:1}.cpReply{margin-top:7px;font-size:12px;color:#2265ca;font-weight:700}.cpComposer{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #e3e9f1;padding:10px;display:flex;gap:8px;z-index:3}.cpComposer input{flex:1;border:1px solid #d9e2ee;border-radius:14px;padding:12px;outline:none}.cpComposer button{background:#1666d8;color:#fff;border-radius:13px;padding:0 16px;font-weight:800}
+</style>
+<div class="commentsPage" id="commentsPage"><div class="cpTop"><button class="cpBack" onclick="closeCommentsPage()">‹</button><div class="cpTitle">التعليقات</div></div><div class="cpBody" id="cpBody"></div><form class="cpComposer" onsubmit="addFullComment(event)"><input id="cpInput" placeholder="اكتب تعليقًا..."><button>إرسال</button></form></div>
+<script>
+let cpPostId=null;
+function openCommentsPage(id){cpPostId=id;const x=state.posts.find(p=>p.id===id);if(!x)return;const el=document.getElementById('commentsPage');const body=document.getElementById('cpBody');body.innerHTML=`<div class="cpPost">${postHTML(x)}</div><div class="cpComments">${(x.comments||[]).map((c,i)=>`<div class="cpComment">${avatar(c[1],c[0]===state.user.name?state.user.photo:'')}<div class="bubble"><b>${c[0]}</b><div>${c[2]}</div><div class="cpReply">↩ رد&nbsp;&nbsp; · &nbsp;👍 ❤️</div></div></div>`).join('')||'<div class="muted" style="padding:20px;text-align:center">لا توجد تعليقات بعد.</div>'}</div>`;el.style.display='block';document.body.style.overflow='hidden'}
+function closeCommentsPage(){document.getElementById('commentsPage').style.display='none';document.body.style.overflow=''}
+function addFullComment(e){e.preventDefault();const input=document.getElementById('cpInput'),t=input.value.trim();if(!t||cpPostId==null)return;const x=state.posts.find(p=>p.id===cpPostId);x.comments=x.comments||[];x.comments.push([state.user.name,state.user.name[0],t]);input.value='';openCommentsPage(cpPostId);render('home');}
+function googleDemo(){showToast('تسجيل Google/Gmail تجريبي — سيتم ربطه بالحساب الحقيقي عند تفعيل Backend')} 
+function logout(){localStorage.removeItem('sahby_user');location.reload()}
+</script>
+
+<style>
+.story{cursor:pointer;position:relative}.story small{display:block;color:#1765d1;font-weight:700;margin-top:2px}
+.storyPage{position:fixed;inset:0;background:#091426;z-index:12000;display:none;color:#fff}.storyStage{height:100%;display:flex;align-items:center;justify-content:center;position:relative}.storyCard{width:min(430px,100%);height:min(760px,100%);background:#13233b;border-radius:22px;overflow:hidden;position:relative}.storyCard .storyMedia{width:100%;height:100%;object-fit:cover;background:linear-gradient(145deg,#2b65b8,#142a4d)}.storyTop{position:absolute;top:0;left:0;right:0;padding:14px;display:flex;align-items:center;gap:10px;background:linear-gradient(#0009,transparent)}.storyClose{margin-right:auto;border:0;background:#0006;color:#fff;width:38px;height:38px;border-radius:50%;font-size:22px}.storyMeta{font-size:11px;opacity:.8}.storyViewers{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,#000c);padding:50px 16px 16px}.storyViewers button{border:0;background:#ffffff1a;color:#fff;border-radius:12px;padding:10px 14px;font-weight:800}.viewerList{display:none;margin-top:10px;max-height:190px;overflow:auto}.viewerRow{display:flex;align-items:center;gap:9px;padding:8px 0}.viewerRow .avatar{background:#dceaff;color:#155ac5}.storyArrow{position:absolute;top:50%;transform:translateY(-50%);border:0;background:#0007;color:#fff;width:42px;height:42px;border-radius:50%;font-size:26px}.storyPrev{right:calc(50% + min(230px,50vw));}.storyNext{left:calc(50% + min(230px,50vw));}
+</style>
+<div class="storyPage" id="storyPage"><div class="storyStage"><button class="storyArrow storyPrev" onclick="changeStory(-1)">›</button><div class="storyCard"><div class="storyTop" id="storyTop"></div><div id="storyMedia"></div><div class="storyViewers"><button onclick="toggleViewers()">👁️ المشاهدون <span id="viewerCount">0</span></button><div class="viewerList" id="viewerList"></div></div></div><button class="storyArrow storyNext" onclick="changeStory(1)">‹</button></div><button class="storyClose" style="position:absolute;top:14px;left:14px;z-index:2" onclick="closeStory()">×</button></div>
+<script>
+const demoStoryViewers=[['سارة علي','س','منذ 3 دقائق'],['أحمد محمد','أ','منذ 8 دقائق'],['نور خالد','ن','منذ 15 دقيقة']];
+let storyIndex=0;
+function openStory(i){storyIndex=i;renderStory()}
+function closeStory(){document.getElementById('storyPage').style.display='none';document.body.style.overflow=''}
+function renderStory(){const p=state.friends[storyIndex]||state.friends[0];if(!p)return;document.getElementById('storyPage').style.display='block';document.body.style.overflow='hidden';document.getElementById('storyTop').innerHTML=`${avatar(p[1])}<div><b>${p[0]}</b><div class="storyMeta">قصة · منذ ${storyIndex+1} ساعة · تختفي بعد 24 ساعة</div></div>`;document.getElementById('storyMedia').innerHTML=`<div class="storyMedia" style="height:100%;display:grid;place-items:center;font-size:72px">${['🌅','🎉','☕','🌃'][storyIndex%4]}</div>`;document.getElementById('viewerCount').textContent=demoStoryViewers.length;document.getElementById('viewerList').innerHTML=demoStoryViewers.map(v=>`<div class="viewerRow">${avatar(v[1])}<div><b>${v[0]}</b><div class="storyMeta">${v[2]}</div></div></div>`).join('');document.getElementById('viewerList').style.display='none'}
+function toggleViewers(){const x=document.getElementById('viewerList');x.style.display=x.style.display==='block'?'none':'block'}
+function changeStory(d){storyIndex=(storyIndex+d+state.friends.length)%state.friends.length;renderStory()}
+</script>
+
+<style>
+.userLink{cursor:pointer;color:inherit;text-decoration:none}.userLink:hover{color:#1765d1}.profileActions{display:flex;gap:8px;margin-top:16px}.profileActions button{flex:1}.fullProfile{padding:18px}.profileCover{height:110px;border-radius:18px;background:linear-gradient(135deg,#0d56bd,#6ea8ff);margin:-2px -2px 0}.profileIdentity{margin-top:-38px;padding:0 12px}.profileIdentity .avatar{width:92px;height:92px;border:4px solid #fff;box-shadow:0 6px 18px rgba(10,50,100,.16)}.profileTabs{display:flex;border-top:1px solid #edf1f6;margin-top:16px}.profileTabs button{flex:1;background:transparent;padding:12px;color:#63728a;font-weight:800}.profileTabs .active{color:#1765d1;border-bottom:2px solid #1765d1}.passwordWrap{position:relative}.passwordWrap input{padding-left:50px!important}.passwordWrap button{position:absolute;left:8px;top:7px;background:#edf3fb;border-radius:10px;padding:7px 9px;font-size:12px}
+</style>
+<script>
+// V9 completeness patch: Gmail required, password visibility/recovery, clickable profiles, and stronger mobile Feed behavior.
+function togglePassword(){const i=document.getElementById('lpass'); if(!i)return; i.type=i.type==='password'?'text':'password'; const b=document.getElementById('showPass'); if(b)b.textContent=i.type==='password'?'إظهار':'إخفاء'}
+function forgotPasswordDemo(){
+ const s=document.getElementById('sheet'),m=document.getElementById('modal');m.style.display='flex';s.innerHTML='<button class="close" onclick="closeModal()">×</button><h2>استعادة كلمة السر</h2><p class="muted">أدخل رقم الموبايل أو Gmail المرتبط بالحساب، ثم نرسل لك رمزًا تجريبيًا.</p><div class="field"><label>الموبايل أو Gmail</label><input id="recoverId" placeholder="01xxxxxxxxx أو name@gmail.com"></div><button class="primary" style="width:100%" onclick="toast(\'رمز الاستعادة التجريبي: 123456\')">إرسال رمز الاستعادة</button>';
+}
+function openUserProfile(name,initial){
+ const isMe=name===state.user.name; const following=!isMe && state.following.includes(name); const friend=!isMe && state.friends.some(f=>f[0]===name);
+ const s=document.getElementById('sheet'),m=document.getElementById('modal');m.style.display='flex';
+ const posts=state.posts.filter(x=>x.name===name);
+ s.innerHTML=`<button class="close" onclick="closeModal()">×</button><div class="fullProfile"><div class="profileCover"></div><div class="profileIdentity"><div class="row">${avatar(initial,name===state.user.name?state.user.photo:'')}<div><div class="name" style="font-size:21px">${escapeHtml(name)}</div><div class="meta">@${escapeHtml(name.toLowerCase().replace(/\s+/g,''))}</div></div></div><p class="muted">عضو في صحبي ✨ · حساب اجتماعي عام</p><div class="counts"><div><b>${friend?state.friends.length:36}</b><span class="meta">أصدقاء</span></div><div><b>${following?128:74}</b><span class="meta">متابعون</span></div><div><b>${following?54:91}</b><span class="meta">يتابع</span></div></div><div class="profileActions">${isMe?'<button class="primary" onclick="editProfileDemo()">تعديل الملف</button>':`<button class="primary" onclick="toast(\'${friend?'أنتم أصدقاء بالفعل':'تم إرسال طلب الصداقة'}\')">${friend?'✓ أصدقاء':'+ إضافة صديق'}</button><button class="chip" onclick="toggleFollowDemo('${escapeHtml(name)}')">${following?'إلغاء المتابعة':'متابعة'}</button><button class="chip" onclick="openChat('${escapeHtml(name)}','${initial}')">💬</button>`}</div></div><div class="profileTabs"><button class="active">المنشورات</button><button onclick="toast(\'قسم الصور جاهز للنسخة القادمة\')">الصور</button><button onclick="toast(\'قسم الفيديو جاهز للنسخة القادمة\')">الفيديو</button></div><div style="margin-top:14px">${posts.map(postHTML).join('')||'<div class="muted" style="padding:18px;text-align:center">لا توجد منشورات بعد.</div>'}</div></div>`;
+}
+function toggleFollowDemo(name){ if(state.following.includes(name)){state.following=state.following.filter(x=>x!==name);toast('تم إلغاء المتابعة')}else{state.following.push(name);toast('تمت المتابعة')} }
+function editProfileDemo(){closeModal();go('profile');toast('يمكن تعديل بيانات الملف في هذه النسخة التجريبية')}
+function installV9(){
+ const pass=document.getElementById('lpass'); if(pass && !pass.parentElement.classList.contains('passwordWrap')){const wrap=document.createElement('div');wrap.className='passwordWrap';pass.parentNode.insertBefore(wrap,pass);wrap.appendChild(pass);const b=document.createElement('button');b.type='button';b.id='showPass';b.textContent='إظهار';b.onclick=togglePassword;wrap.appendChild(b)}
+}
+// Replace login validation to require Gmail.
+const _requestOtp=requestOtp;
+requestOtp=function(){const g=document.getElementById('lgmail')?.value.trim(); if(!g || !/^[^@\s]+@gmail\.com$/i.test(g)){toast('أدخل بريد Gmail صحيحًا');return} _requestOtp();};
+const _finishLogin=finishLogin;
+finishLogin=function(){state.user.email=document.getElementById('lgmail')?.value.trim()||''; _finishLogin();};
+// Make feed names, comments, friends and messages navigable to profiles.
+const _postHTML=postHTML;
+postHTML=function(x){let html=_postHTML(x); html=html.replace(`<div class="name">${x.name}</div>`,`<div class="name userLink" onclick="openUserProfile('${escapeHtml(x.name)}','${escapeHtml(x.initial)}')">${escapeHtml(x.name)}</div>`); html=html.replace(/<img src="(.*?)">/g,'<img loading="lazy" src="$1">'); html=html.replace(/<video controls/g,'<video controls preload="metadata"'); return html;};
+// Story cards already live at top; make friend/story identities clickable through profile on long press-free tap on name.
+const _renderFriends=renderFriends;
+renderFriends=function(p){_renderFriends(p); p.querySelectorAll('.friend').forEach((el,i)=>{el.onclick=()=>openUserProfile(state.friends[i][0],state.friends[i][1]);});};
+// Password visibility is initialized after DOM is ready.
+window.addEventListener('DOMContentLoaded',installV9); setTimeout(installV9,50);
+</script>
+
+</body></html>
